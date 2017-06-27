@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="me.vguillou.etickettile.PermissionRequestActivity">
+
+    <LinearLayout
+        style="@style/ActivityContent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <ImageView
+            android:layout_width="@dimen/activity_permission_request_img_size"
+            android:layout_height="@dimen/activity_permission_request_img_size"
+            android:contentDescription="@string/activity_permission_request_icon_content_desc"
+            android:src="@drawable/ic_eticket_24dp"
+            android:tint="@color/textColorOnPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:gravity="center_horizontal"
+            android:text="@string/activity_permission_request_title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/activity_text_title_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/activity_permission_request_desc"
+            android:textAlignment="center"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnGoToPermissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/activity_permission_request_button_permission" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="activity_main_step_1_content">You can now add your <b>E-ticket tile</b> by editing your Quick Settings:</string>
+    <string name="activity_main_step_1_img_content_desc">Edit Quick Settings tiles</string>
+</resources>

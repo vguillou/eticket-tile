@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/AppButtonTheme</item>
+        <item name="android:buttonBarButtonStyle">@style/AppButtonBorderlessTheme</item>
+        <item name="android:textSize">@dimen/activity_text_size</item>
+    </style>
+
+    <style name="NoActionBarAppTheme" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="android:ThemeOverlay.Material.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="android:ThemeOverlay.Material.Light" />
+
+    <!-- Buttons -->
+    <style name="AppButtonTheme" parent="android:Widget.Material.Button.Colored">
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:colorControlHighlight">@color/colorSecondary</item>
+    </style>
+
+    <!-- Buttons borderless -->
+    <style name="AppButtonBorderlessTheme" parent="android:Widget.Material.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:colorControlHighlight">@color/colorPrimary</item>
+    </style>
+
+    <!-- Max with of all views in an activity -->
+    <style name="ActivityContent">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- Step numbers -->
+    <style name="StepNumberTextView" parent="android:Widget.TextView">
+        <item name="android:width">@dimen/view_step_number_textview_size</item>
+        <item name="android:minWidth">@dimen/view_step_number_textview_size</item>
+        <item name="android:height">@dimen/view_step_number_textview_size</item>
+        <item name="android:minHeight">@dimen/view_step_number_textview_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/circle_background</item>
+    </style>
+
+</resources>

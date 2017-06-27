@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tuile E-billet</string>
+
+    <string name="tile_label">Mode E-billet</string>
+    <string name="tile_content_desc_on">Mode E-billet activé</string>
+    <string name="tile_content_desc_off">Mode E-billet désactivé</string>
+    <string name="tile_content_desc_click_on">Mode E-billet activé</string>
+    <string name="tile_content_desc_click_off">Mode E-billet désactivé</string>
+
+    <string name="activity_permission_request_title">D\'abord, une petite formalité…</string>
+    <string name="activity_permission_request_icon_content_desc">Tuile E-billet</string>
+    <string name="activity_permission_request_button_permission">Ouvrir Autorisations</string>
+    <string name="activity_permission_request_desc">Afin de pouvoir changer la luminosité et bloquer la rotation automatique, la tuile a besoin de votre autorisation pour modifier les paramètres du système.</string>
+
+    <string name="activity_main_step_end_content">C\'est terminé ! Votre <b>tuile E-billet</b> est prête à l\'emploi. Vous pouvez par ailleurs enlever l\'icône de lancement de votre tiroir d\'applications Android. Ne vous inquiétez pas, il reste possible de revenir sur l\'application en appuyant longuement sur votre nouvelle <b>tuile E-billet</b>.</string>
+
+    <string name="activity_main_button_hide_launcher_icon">Cacher l\'icône de l\'application</string>
+    <string name="activity_main_button_show_launcher_icon">Afficher l\'icône de l\'application</string>
+    <string name="activity_main_button_uninstall">Désinstaller l\'application</string>
+
+    <string name="dialog_confirm_hide_launcher_icon">Vous êtes sur le point de cacher l\'icône de lancement de l\'application. La <b>tuile E-billet</b> restera bien sûr utilisable, et vous pourrez revenir ici à tout moment en appuyant longuement sur la tuile.</string>
+    <string name="dialog_confirm_hide_launcher_icon_btn_positive">Cacher l\'icône</string>
+    <string name="dialog_confirm_hide_launcher_icon_btn_negative">Annuler</string>
+</resources>

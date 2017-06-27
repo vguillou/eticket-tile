@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">@dimen/margin_normal</dimen>
+    <dimen name="activity_vertical_margin">@dimen/margin_normal</dimen>
+
+    <!-- Margin / padding sizes (material design compliant) -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+    <!-- Text size (material design compliant) -->
+    <dimen name="activity_text_title_size">24sp</dimen>
+    <dimen name="activity_text_size">14sp</dimen>
+
+    <!-- Specific dimensions for the permission request activity -->
+    <dimen name="activity_permission_request_img_size">120dp</dimen>
+
+    <!-- Standard width of buttons -->
+    <dimen name="button_normalized_width">175dp</dimen>
+
+    <!-- Step number size -->
+    <dimen name="view_step_number_textview_size">30dp</dimen>
+
+    <!-- Circle widget standard size -->
+    <dimen name="circle_background_size">20dp</dimen>
+</resources>

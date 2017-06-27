@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="me.vguillou.etickettile">
+
+    <application>
+
+        <service
+            android:name=".ETicketTileService"
+            android:icon="@drawable/ic_eticket_disabled_24dp"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="me.vguillou.etickettile.MainActivity"
+            android:theme="@style/NoActionBarAppTheme"
+            tools:node="merge">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

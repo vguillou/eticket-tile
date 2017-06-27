@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E-ticket tile</string>
+
+    <string name="tile_label">E-ticket mode</string>
+    <string name="tile_content_desc_on">E-ticket mode ON</string>
+    <string name="tile_content_desc_off">E-ticket mode OFF</string>
+    <string name="tile_content_desc_click_on">E-ticket mode turned ON</string>
+    <string name="tile_content_desc_click_off">E-ticket mode turned OFF</string>
+
+    <string name="activity_permission_request_title">Just a little requirement…</string>
+    <string name="activity_permission_request_icon_content_desc">E-ticket tile</string>
+    <string name="activity_permission_request_button_permission">Permission settings</string>
+    <string name="activity_permission_request_desc">In order to change the brightness and lock the device orientation, the tile need your permission to change your device\'s settings.</string>
+
+    <string name="activity_main_step_end_content">You are all set! The <b>E-ticket Quick Settings tile</b> is now ready. You may hide the launcher icon if you so choose. Don\'t worry, you can still open this application by long clicking your new <b>E-ticket tile</b>.</string>
+
+    <string name="activity_main_button_hide_launcher_icon">Hide the app drawer icon</string>
+    <string name="activity_main_button_show_launcher_icon">Show the app drawer icon</string>
+    <string name="activity_main_button_uninstall">Uninstall the application</string>
+
+    <string name="dialog_confirm_hide_launcher_icon">You are about to hide the application\'s icon in your app drawer. The <b>E-ticket tile</b> will of course remain usable, and you can come back here by long pressing the tile.</string>
+    <string name="dialog_confirm_hide_launcher_icon_btn_positive">Hide it!</string>
+    <string name="dialog_confirm_hide_launcher_icon_btn_negative">Cancel</string>
+</resources>

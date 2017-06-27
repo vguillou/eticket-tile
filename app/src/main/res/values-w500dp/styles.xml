@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Max with of all views in an activity -->
+    <style name="ActivityContent">
+        <item name="android:layout_width">@dimen/activity_content_maxWidth</item>
+    </style>
+
+</resources>

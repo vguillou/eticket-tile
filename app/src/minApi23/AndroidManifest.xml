@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="me.vguillou.etickettile">
+
+    <!-- API 23 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application>
+
+        <receiver
+            android:name="me.vguillou.etickettile.TileBroadcastReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+
+            <intent-filter>
+                <action android:name="me.vguillou.ACTION_ETICKET_TILE_CLICK" />
+                <action android:name="me.vguillou.ACTION_ETICKET_TILE_LONG_CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="me.vguillou.etickettile.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

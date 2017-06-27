@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="me.vguillou.etickettile.MainActivity">
+
+    <LinearLayout
+        style="@style/ActivityContent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Title -->
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:gravity="center_horizontal"
+                android:text="@string/activity_main_title"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/activity_text_title_size"
+                android:textStyle="bold" />
+
+            <!-- Step 1 -->
+
+            <TextView
+                android:id="@+id/textView_step_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/textView_title"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/activity_main_step_1"
+                android:theme="@style/StepNumberTextView" />
+
+            <TextView
+                android:id="@+id/textView_step_1_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_title"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_1"
+                android:text="@string/activity_main_step_1_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_copy_clipboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView_step_1_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:text="@string/activity_main_button_copy_clipboard" />
+
+            <!-- Step 2 -->
+
+            <TextView
+                android:id="@+id/textView_step_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/btn_copy_clipboard"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/activity_main_step_2"
+                android:theme="@style/StepNumberTextView" />
+
+            <TextView
+                android:id="@+id/textView_step_2_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/btn_copy_clipboard"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_2"
+                android:text="@string/activity_main_step_2_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/textView_step_2_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_2_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_toEndOf="@id/textView_step_2"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_main_step_2_img_content_desc"
+                android:scaleType="centerCrop"
+                android:src="@drawable/m_step_2" />
+
+            <!-- Step 3 -->
+
+            <TextView
+                android:id="@+id/textView_step_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/textView_step_2_img"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/activity_main_step_3"
+                android:theme="@style/StepNumberTextView" />
+
+            <TextView
+                android:id="@+id/textView_step_3_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_2_img"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_3"
+                android:text="@string/activity_main_step_3_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_open_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView_step_3_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:text="@string/activity_main_button_open_settings" />
+
+            <!-- Step 4 -->
+
+            <TextView
+                android:id="@+id/textView_step_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/btn_open_settings"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/activity_main_step_4"
+                android:theme="@style/StepNumberTextView" />
+
+            <TextView
+                android:id="@+id/textView_step_4_1_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/btn_open_settings"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_4"
+                android:text="@string/activity_main_step_4_1_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/textView_step_4_1_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_4_1_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_4"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_main_step_4_1_img_content_desc"
+                android:scaleType="fitCenter"
+                android:src="@drawable/m_step_4_1" />
+
+            <ImageView
+                android:id="@+id/textView_step_4_2_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_4_1_img"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@id/textView_step_4"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_main_step_4_2_img_content_desc"
+                android:scaleType="centerCrop"
+                android:src="@drawable/m_step_4_2" />
+
+            <TextView
+                android:id="@+id/textView_step_4_2_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_4_2_img"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_toEndOf="@id/textView_step_4"
+                android:text="@string/activity_main_step_4_2_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <!-- Step 5 -->
+
+            <TextView
+                android:id="@+id/textView_step_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/textView_step_4_2_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="@string/activity_main_step_5"
+                android:theme="@style/StepNumberTextView" />
+
+            <TextView
+                android:id="@+id/textView_step_5_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/textView_step_4_2_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_toEndOf="@id/textView_step_5"
+                android:text="@string/activity_main_step_end_content"
+                android:textAlignment="textStart"
+                android:textColor="@android:color/white" />
+
+            <!-- Action buttons -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/textView_step_5_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_app_launcher_toggle"
+                    android:layout_width="@dimen/button_normalized_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+                <Button
+                    android:id="@+id/btn_uninstall"
+                    android:layout_width="@dimen/button_normalized_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:text="@string/activity_main_button_uninstall" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

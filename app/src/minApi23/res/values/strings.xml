@@ -1,0 +1,27 @@
+<resources>
+    <string name="dialog_update_necessary_message">A new version of the <b>E-ticket tile</b> is available specifically for your new Android System.\nPlease proceed with the update.</string>
+    <string name="dialog_update_necessary_btn_playstore">Update</string>
+
+    <string name="activity_main_title">…and a bit of setup because of Android 6 Marshmallow</string>
+    <string name="activity_main_button_copy_clipboard">Copy to clipboard</string>
+    <string name="activity_main_button_open_settings">Open Settings</string>
+
+    <string name="activity_main_step_1" translatable="false">1</string>
+    <string name="activity_main_step_2" translatable="false">2</string>
+    <string name="activity_main_step_3" translatable="false">3</string>
+    <string name="activity_main_step_4" translatable="false">4</string>
+    <string name="activity_main_step_5" translatable="false">5</string>
+
+    <string name="activity_main_step_1_content">First, we need to put the <b>E-ticket tile</b> identifier in your Clipboard. To this end, just click the button below.</string>
+    <string name="activity_main_step_1_validated">Identifier copied in your Clipboard.\nPlease proceed to step 2.</string>
+
+    <string name="activity_main_step_2_content">Swipe down twice on your device\'s status bar, and long click the <b>Settings icon</b> to activate the <b>System UI Tuner menu</b>.</string>
+    <string name="activity_main_step_2_img_content_desc">Long press Settings for unlocking the System UI Tuner menu</string>
+
+    <string name="activity_main_step_3_content">Open and scroll all the way down your <b>Settings</b> menu and select <b>System UI Tuner</b>, and then <b>Quick Settings</b>.</string>
+
+    <string name="activity_main_step_4_1_content">Click <b>Add tile</b> and select <b>Broadcast Tile</b>. Paste the <b>E-ticket tile</b> identifier copied in step 1 and validate.</string>
+    <string name="activity_main_step_4_1_img_content_desc">Add tile</string>
+    <string name="activity_main_step_4_2_img_content_desc">Broadcast tile identifier</string>
+    <string name="activity_main_step_4_2_content">You may also drag and drop the tile in this panel to move it around as you\'d like.</string>
+</resources>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="dialog_update_necessary_message">Une nouvelle version de la <b>tuile E-billet</b> est disponible spécifiquement pour la nouvelle version de votre système Android.\nMerci de procéder à la mise à jour.</string>
+    <string name="dialog_update_necessary_btn_playstore">Mettre à jour</string>
+
+    <string name="activity_main_title">…et un peu de configuration à cause d\'Android 6 Marshmallow</string>
+
+    <string name="activity_main_step_1_content">Premièrement, copions l\'identifiant de la <b>tuile E-billet</b> dans votre presse papier. Pour cela, appuyez simplement sur le bouton ci-dessous.</string>
+    <string name="activity_main_button_copy_clipboard">Copier l\'identifiant</string>
+    <string name="activity_main_step_1_validated">Identifiant copié.\nMerci de passer à l\'étape 2.</string>
+
+    <string name="activity_main_step_2_content">Swipez deux fois sur la barre de statut de votre appareil, puis appuyez longuement sur l\'<b>icône Paramètres</b> pour activer le <b>menu System UI Tuner</b>.</string>
+    <string name="activity_main_step_2_img_content_desc">Appuyez longuement sur l\'icône Paramètres pour activer le menu System UI Tuner</string>
+
+    <string name="activity_main_step_3_content">Ouvrez et faites défiler jusqu\'en bas votre menu <b>Paramètres</b>, sélectionnez <b>System UI Tuner</b> puis <b>Configuration rapide</b> (Quick Settings).</string>
+    <string name="activity_main_button_open_settings">Ouvrir Paramètres</string>
+
+    <string name="activity_main_step_4_1_content">Cliquez sur <b>Ajouter une tuile</b> (Add tile) et sélectionnez <b>Tuile de diffusion</b> (Broadcast Tile). Coller l\'identifiant de la <b>tuile E-billet</b> copié à l\'étape 1 et validez.</string>
+    <string name="activity_main_step_4_1_img_content_desc">Ajouter une tuile</string>
+    <string name="activity_main_step_4_2_img_content_desc">Identifiant de la tuile de diffusion</string>
+    <string name="activity_main_step_4_2_content">Vous pouvez aussi glisser-déposer la tuile dans ce panneau pour réorganiser les tuiles à votre convenance.</string>
+</resources>
