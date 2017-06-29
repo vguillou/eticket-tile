@@ -2,7 +2,7 @@
 
 [![GitHub version](https://badge.fury.io/gh/vguillou%2Feticket-tile.svg)](https://badge.fury.io/gh/vguillou%2Feticket-tile)
 
-_A simple Quick Settings tile for Android Marshmallow and up (6.0+)_
+_A simple Quick Settings tile for easy screen scanning, compatible with Android Marshmallow and up (6.0+) A Quick Settings tile_
 
 
 ## Links
