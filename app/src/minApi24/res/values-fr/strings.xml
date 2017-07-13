@@ -2,4 +2,5 @@
 <resources>
     <string name="activity_main_step_1_content">Vous pouvez dès maintenant ajouter votre <b>tuile E-billet</b> via l\'écran de modification de la Configuration rapide (Quick Settings) :</string>
     <string name="activity_main_step_1_img_content_desc">Modifier les tuiles de la Configuration rapide (Quick Settings)</string>
+    <string name="activity_main_switch_mode">Utiliser une méthode d\'affiche alternative pour la tuile de Configuration rapide (cochez si le statut d\'activation n\'est pas reflété dans les Quick Settings)</string>
 </resources>

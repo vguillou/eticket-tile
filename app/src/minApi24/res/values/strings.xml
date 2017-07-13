@@ -2,4 +2,5 @@
 <resources>
     <string name="activity_main_step_1_content">You can now add your <b>E-ticket tile</b> by editing your Quick Settings:</string>
     <string name="activity_main_step_1_img_content_desc">Edit Quick Settings tiles</string>
+    <string name="activity_main_switch_mode">Use an alternative Quick Settings display method (toggle if the activation state is not reflected properly in the Quick Settings)</string>
 </resources>

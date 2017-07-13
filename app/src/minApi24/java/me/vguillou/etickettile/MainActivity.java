@@ -2,21 +2,46 @@ package me.vguillou.etickettile;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import me.vguillou.etickettile.helper.ETicketTileHelper;
+import me.vguillou.etickettile.helper.PreferenceHelper;
+import me.vguillou.etickettile.helper.QsTileHelper;
 
 public class MainActivity extends BaseMainActivity {
 
     private ETicketTileHelper mETicketTileHelper;
 
+    /**
+     * The preference helper
+     */
+    private PreferenceHelper mPreferenceHelper;
+
     private boolean mTileShown = false;
+
+    /**
+     * Switch between Quick Settings activation mode
+     */
+    protected Switch switchMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mETicketTileHelper = new ETicketTileHelper(this);
+        mPreferenceHelper = new PreferenceHelper(this);
         mTileShown = mETicketTileHelper.isTileShown();
+
+        // The QS mode switch
+        switchMode = (Switch) findViewById(R.id.mode_switch);
+        switchMode.setChecked(QsTileHelper.isAlternativeMode(mPreferenceHelper));
+        switchMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                QsTileHelper.setAlternativeMode(mPreferenceHelper, isChecked);
+            }
+        });
         updateView(mTileShown);
     }
 
@@ -40,6 +65,7 @@ public class MainActivity extends BaseMainActivity {
      * @param tileShown Must be {@code true} if the user added the tile to the Quick Settings
      */
     private void updateView(final boolean tileShown) {
+        switchMode.setVisibility(tileShown ? View.VISIBLE : View.GONE);
         btnAppLauncherToggle.setVisibility(tileShown ? View.VISIBLE : View.GONE);
         findViewById(R.id.textView_step_img).setVisibility(tileShown ? View.GONE : View.VISIBLE);
         ((TextView) findViewById(R.id.textView_step_content)).setText(tileShown ?

@@ -11,6 +11,17 @@ import android.support.annotation.NonNull;
  */
 public class QsTileHelper {
 
+    /**
+     * If an alternative display mode is to be used for the tile
+     */
+    private static final String PREF_ALT_TILE_DISPLAY_MODE = "me.vguillou.ALT_TILE_DISPLAY_MODE";
+    private static final String PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED = "me.vguillou.ALT_TILE_DISPLAY_MODE_HAS_CHANGED";
+
+    /**
+     * The preference helper
+     */
+    private final PreferenceHelper mPreferenceHelper;
+
     private final Context mContext;
 
     private final int mDrawableOn;
@@ -40,16 +51,18 @@ public class QsTileHelper {
         mContentDescOn = contentDescOn;
         mDrawableOff = drawableOff;
         mContentDescOff = contentDescOff;
+        mPreferenceHelper = new PreferenceHelper(context);
     }
 
     /**
      * Initialize the tile to manage.
      * Must be called in {@code onTileAdded} in the {@code TileService}
      *
+     * @param preferenceHelper The preference helper
      * @param tile The tile to manage
      */
-    public static void initialize(final Tile tile) {
-        if (tile != null) {
+    public static void initialize(@NonNull PreferenceHelper preferenceHelper, final Tile tile) {
+        if (tile != null && isAlternativeMode(preferenceHelper)) {
             // Always activated, this way it is possible to handle alpha manually
             tile.setState(Tile.STATE_ACTIVE);
             tile.updateTile();
@@ -66,12 +79,45 @@ public class QsTileHelper {
     public void changeState(final Tile tile,
                             final boolean activated) {
         if (tile != null) {
-            tile.setState(Tile.STATE_ACTIVE);
-            tile.setIcon(Icon.createWithResource(mContext,
-                    activated ? mDrawableOn : mDrawableOff));
+            // Alt mode, handling alpha manually
+            if (isAlternativeMode(mPreferenceHelper))
+                altChangeState(tile, activated);
+            // Normal mode
+            else {
+                // If the mode has changed, we must restore the good drawable for normal mode
+                if (mPreferenceHelper.getBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED))
+                    tile.setIcon(Icon.createWithResource(mContext, mDrawableOn));
+                tile.setState(activated ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
+            }
+            // Accessibility
             tile.setContentDescription(mContext.getString(
                     activated ? mContentDescOn : mContentDescOff));
             tile.updateTile();
+            mPreferenceHelper.setBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED, false);
         }
+    }
+
+    private void altChangeState(final Tile tile,
+                                final boolean activated) {
+        tile.setState(Tile.STATE_ACTIVE);
+        tile.setIcon(Icon.createWithResource(mContext,
+                activated ? mDrawableOn : mDrawableOff));
+    }
+
+    /**
+     * @param preferenceHelper The preference helper
+     * @return If the helper uses an alternative toggle method
+     */
+    public static boolean isAlternativeMode(@NonNull PreferenceHelper preferenceHelper) {
+        return preferenceHelper.getBoolean(PREF_ALT_TILE_DISPLAY_MODE);
+    }
+
+    /**
+     * @param preferenceHelper The preference helper
+     * @param alternativeMode Makes the helper use an alternative toggle methode, or not
+     */
+    public static void setAlternativeMode(@NonNull PreferenceHelper preferenceHelper, boolean alternativeMode) {
+        preferenceHelper.setBoolean(PREF_ALT_TILE_DISPLAY_MODE, alternativeMode);
+        preferenceHelper.setBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED, true);
     }
 }

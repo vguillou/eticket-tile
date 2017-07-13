@@ -4,6 +4,7 @@ import android.service.quicksettings.TileService;
 
 import me.vguillou.etickettile.helper.ETicketModeHelper;
 import me.vguillou.etickettile.helper.ETicketTileHelper;
+import me.vguillou.etickettile.helper.PreferenceHelper;
 import me.vguillou.etickettile.helper.QsTileHelper;
 
 /**
@@ -30,7 +31,7 @@ public class ETicketTileService extends TileService {
         new ETicketTileHelper(getApplicationContext()).setTileShown(true);
 
         // Initializing the tile
-        QsTileHelper.initialize(getQsTile());
+        QsTileHelper.initialize(new PreferenceHelper(getApplicationContext()), getQsTile());
     }
 
     @Override
