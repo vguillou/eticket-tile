@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import javax.inject.Inject;
+
+import me.vguillou.etickettile.di.Injector;
 import me.vguillou.etickettile.helper.SettingsHelper;
 
 /**
@@ -15,6 +18,7 @@ import me.vguillou.etickettile.helper.SettingsHelper;
  */
 public final class PermissionRequestActivity extends Activity {
 
+    @Inject
     private SettingsHelper mSettingsHelper;
 
     /**
@@ -32,9 +36,7 @@ public final class PermissionRequestActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Get the settings helper
-        mSettingsHelper = new SettingsHelper(this);
+        new Injector().inject(this);
 
         // If permissions are fine, let's launch the main activity
         if (mSettingsHelper.hasPermission()) {

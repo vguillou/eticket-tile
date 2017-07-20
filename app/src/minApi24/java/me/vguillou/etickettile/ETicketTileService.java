@@ -2,56 +2,73 @@ package me.vguillou.etickettile;
 
 import android.service.quicksettings.TileService;
 
+import javax.inject.Inject;
+
+import me.vguillou.etickettile.di.Injector;
 import me.vguillou.etickettile.helper.ETicketModeHelper;
-import me.vguillou.etickettile.helper.ETicketTileHelper;
-import me.vguillou.etickettile.helper.PreferenceHelper;
-import me.vguillou.etickettile.helper.QsTileHelper;
+import me.vguillou.etickettile.helper.ETicketTileVisibilityHelper;
+import me.vguillou.etickettile.helper.QsTileActivationHelper;
 
 /**
  * Nougat+ (api 24+) service to handle the tile
  */
 public class ETicketTileService extends TileService {
 
+    @Inject
+    private QsTileActivationHelper mQsTileActivationHelper;
+
+    @Inject
+    private ETicketTileVisibilityHelper mETicketTileVisibilityHelper;
+
+    @Inject
     private ETicketModeHelper mETicketModeHelper;
 
     /**
-     * @return The Quick Settings Tile helper
+     * Dependencies injector
      */
-    private QsTileHelper getQsTileHelper() {
-        return new QsTileHelper(getApplicationContext(),
-                R.drawable.ic_eticket_24dp,
-                R.string.tile_content_desc_on,
-                R.drawable.ic_eticket_disabled_24dp,
-                R.string.tile_content_desc_off);
+    private Injector injector;
+
+    /**
+     * Inject dependencies if needed
+     */
+    private void inject() {
+        if (injector == null) {
+            injector = new Injector();
+            injector.inject(this);
+        }
     }
 
     @Override
     public void onTileAdded() {
         super.onTileAdded();
-        new ETicketTileHelper(getApplicationContext()).setTileShown(true);
+        inject();
+        mETicketTileVisibilityHelper.setTileShown(true);
 
         // Initializing the tile
-        QsTileHelper.initialize(new PreferenceHelper(getApplicationContext()), getQsTile());
+        mQsTileActivationHelper.tileAdded(getQsTile());
     }
 
     @Override
     public void onTileRemoved() {
         super.onTileRemoved();
-        new ETicketTileHelper(getApplicationContext()).setTileShown(false);
+        inject();
+        mETicketTileVisibilityHelper.setTileShown(false);
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
-        mETicketModeHelper = new ETicketModeHelper(getApplicationContext());
+        inject();
+        mETicketTileVisibilityHelper.setTileShown(true);
 
         // Restore the tile state whenever it becomes visible
-        getQsTileHelper().changeState(getQsTile(), mETicketModeHelper.isETicketModeActivated());
+        mQsTileActivationHelper.changeState(getQsTile(), mETicketModeHelper.isETicketModeActivated());
     }
 
     @Override
     public void onClick() {
         super.onClick();
+        inject();
 
         // If lacking permissions, launching the config activity
         if (!mETicketModeHelper.hasPermission()) {
@@ -61,6 +78,6 @@ public class ETicketTileService extends TileService {
 
         // Otherwise we can toggle the eTicket mode and update the tile
         final boolean activated = mETicketModeHelper.toggle();
-        getQsTileHelper().changeState(getQsTile(), activated);
+        mQsTileActivationHelper.changeState(getQsTile(), activated);
     }
 }

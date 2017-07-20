@@ -31,7 +31,6 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:gravity="center_horizontal"
             android:text="@string/activity_permission_request_title"
-            android:textColor="@android:color/white"
             android:textSize="@dimen/activity_text_title_size"
             android:textStyle="bold" />
 
@@ -40,8 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/activity_permission_request_desc"
-            android:textAlignment="center"
-            android:textColor="@android:color/white" />
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/btnGoToPermissions"

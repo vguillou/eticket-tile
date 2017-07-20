@@ -6,10 +6,14 @@ import android.support.annotation.NonNull;
 
 import com.kcoppock.broadcasttilesupport.BroadcastTileIntentBuilder;
 
-import me.vguillou.etickettile.R;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
 import me.vguillou.etickettile.TileBroadcastReceiver;
 
-public final class ETicketBroadcastTileHelper extends ETicketTileHelper {
+@Singleton
+public final class ETicketBroadcastTileHelper extends ETicketTileVisibilityHelper {
 
     /**
      * This is the identifier of the custom Broadcast Tile. Whatever action you configured the tile
@@ -18,11 +22,30 @@ public final class ETicketBroadcastTileHelper extends ETicketTileHelper {
      */
     public static final String BROADCAST_TILE_IDENTIFIER = "me.vguillou.ETICKETTILE";
 
-    private final Context mContext;
+    private final int mTileLabel;
 
-    public ETicketBroadcastTileHelper(@NonNull Context context) {
-        super(context);
-        mContext = context.getApplicationContext();
+    private final int mDrawableOn;
+
+    private final int mDrawableOff;
+
+    private final int mContentDescOn;
+
+    private final int mContentDescOff;
+
+    @Inject
+    public ETicketBroadcastTileHelper(@NonNull Context context,
+                                      @NonNull PreferenceHelper preferenceHelper,
+                                      @Named("string_tile_label") final int tileLabel,
+                                      @Named("drawable_tile_activated") final int drawableOn,
+                                      @Named("string_cd_tile_activated") final int contentDescOn,
+                                      @Named("drawable_tile_deactivated") final int drawableOff,
+                                      @Named("string_cd_tile_deactivated") final int contentDescOff) {
+        super(context, preferenceHelper);
+        mTileLabel = tileLabel;
+        mDrawableOn = drawableOn;
+        mContentDescOn = contentDescOn;
+        mDrawableOff = drawableOff;
+        mContentDescOff = contentDescOff;
     }
 
     /**
@@ -45,15 +68,15 @@ public final class ETicketBroadcastTileHelper extends ETicketTileHelper {
         // enabled with this broadcast Intent.
         mContext.sendBroadcast(new BroadcastTileIntentBuilder(mContext.getApplicationContext(), BROADCAST_TILE_IDENTIFIER)
                 .setVisible(true)
-                .setLabel(mContext.getString(R.string.tile_label))
+                .setLabel(mContext.getString(mTileLabel))
                 .setIconResource(activated
-                        ? R.drawable.ic_eticket_24dp
-                        : R.drawable.ic_eticket_disabled_24dp)
+                        ? mDrawableOn
+                        : mDrawableOff)
                 .setOnClickBroadcast(eticketModeClickIntent)
                 .setOnLongClickBroadcast(eticketModeLongClickIntent)
                 .setContentDescription(mContext.getString(activated
-                        ? R.string.tile_content_desc_on
-                        : R.string.tile_content_desc_off))
+                        ? mContentDescOn
+                        : mContentDescOff))
                 .build());
     }
 

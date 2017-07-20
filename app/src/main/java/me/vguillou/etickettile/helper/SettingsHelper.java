@@ -7,9 +7,13 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Helper to change the System Settings
  */
+@Singleton
 public final class SettingsHelper {
 
     private static final String PREF_PREVIOUS_BRIGHTNESS_LEVEL = "me.vguillou.PREVIOUS_BRIGHTNESS_LEVEL";
@@ -25,10 +29,13 @@ public final class SettingsHelper {
 
     private final ContentResolver mContentResolver;
 
-    public SettingsHelper(@NonNull Context context) {
+    @Inject
+    public SettingsHelper(@NonNull Context context,
+                          @NonNull PreferenceHelper preferenceHelper,
+                          @NonNull ContentResolver contentResolver) {
         mContext = context.getApplicationContext();
-        mPreferenceHelper = new PreferenceHelper(mContext);
-        mContentResolver = mContext.getContentResolver();
+        mPreferenceHelper = preferenceHelper;
+        mContentResolver = contentResolver;
     }
 
     /**

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import me.vguillou.etickettile.helper.ETicketBroadcastTileHelper;
 
 /**
@@ -22,6 +24,7 @@ public final class MainActivity extends BaseMainActivity {
     /**
      * Marshmallow's helper to deal with the custom Quick Setting Tile
      */
+    @Inject
     private ETicketBroadcastTileHelper mETicketBroadcastTileHelper;
 
     /**
@@ -32,9 +35,6 @@ public final class MainActivity extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Helper
-        mETicketBroadcastTileHelper = new ETicketBroadcastTileHelper(this);
 
         // Views
         findViewById(R.id.btn_copy_clipboard).setOnClickListener(new View.OnClickListener() {

@@ -1,29 +1,34 @@
 package me.vguillou.etickettile.helper;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 /**
  * Helper to handle the app's launcher icon
  */
+@Singleton
 public final class AppLauncherIconHelper {
 
-    private final ComponentName mComponentName;
+    private final ComponentName mMainActivityComponentName;
 
     private final PackageManager mPackageManager;
 
     /**
      * Constructor
      *
-     * @param context              Calling context
-     * @param launcherActivityName Name of your app's main activity class, started when the launcher icon is pressed
+     * @param packageManager            the package manager
+     * @param mainActivityComponentName ComponentName for the main Activity
      */
-    public AppLauncherIconHelper(@NonNull final Context context,
-                                 @NonNull final String launcherActivityName) {
-        mPackageManager = context.getPackageManager();
-        mComponentName = new ComponentName(context, context.getPackageName() + "." + launcherActivityName);
+    @Inject
+    public AppLauncherIconHelper(@NonNull PackageManager packageManager,
+                                 @Named("main_activity_component_name") @NonNull final ComponentName mainActivityComponentName) {
+        mPackageManager = packageManager;
+        mMainActivityComponentName = mainActivityComponentName;
     }
 
     /**
@@ -32,7 +37,7 @@ public final class AppLauncherIconHelper {
      * @return {@code true} if enabled
      */
     public boolean isAppLauncherIconEnabled() {
-        final int state = mPackageManager.getComponentEnabledSetting(mComponentName);
+        final int state = mPackageManager.getComponentEnabledSetting(mMainActivityComponentName);
         return state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT || state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
     }
 
@@ -41,7 +46,7 @@ public final class AppLauncherIconHelper {
      */
     public void toggleAppLauncherIcon() {
         final boolean isEnabled = isAppLauncherIconEnabled();
-        mPackageManager.setComponentEnabledSetting(mComponentName,
+        mPackageManager.setComponentEnabledSetting(mMainActivityComponentName,
                 isEnabled ? PackageManager.COMPONENT_ENABLED_STATE_DISABLED : PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
     }

@@ -11,6 +11,9 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 
+import javax.inject.Inject;
+
+import me.vguillou.etickettile.di.Injector;
 import me.vguillou.etickettile.helper.AppLauncherIconHelper;
 import me.vguillou.etickettile.helper.SettingsHelper;
 
@@ -27,17 +30,17 @@ public abstract class BaseMainActivity extends Activity {
     /**
      * Helper to deal with the system settings
      */
+    @Inject
     protected SettingsHelper mSettingsHelper;
-
-    /**
-     * Helper to show/hide the App's launcher icon in the user's app drawer
-     */
-    private AppLauncherIconHelper mAppLauncherIconHelper;
-
     /**
      * Button to show/hide the App's launcher icon in the user's app drawer
      */
     protected Button btnAppLauncherToggle;
+    /**
+     * Helper to show/hide the App's launcher icon in the user's app drawer
+     */
+    @Inject
+    private AppLauncherIconHelper mAppLauncherIconHelper;
 
     /**
      * Intent to launch to MainActivity
@@ -54,10 +57,7 @@ public abstract class BaseMainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Get the helpers
-        mSettingsHelper = new SettingsHelper(this);
-        mAppLauncherIconHelper = new AppLauncherIconHelper(this, "alias");
+        new Injector().inject(this);
 
         // If no permission, redirect to the PermissionRequestActivity
         if (!mSettingsHelper.hasPermission()) {

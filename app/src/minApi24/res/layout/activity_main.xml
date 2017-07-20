@@ -33,8 +33,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:gravity="center_horizontal"
             android:text="@string/activity_main_step_1_content"
-            android:textAlignment="center"
-            android:textColor="@android:color/white" />
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/textView_step_img"
@@ -52,8 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_large"
-            android:text="@string/activity_main_switch_mode"
-            android:textColor="@android:color/white" />
+            android:text="@string/activity_main_switch_mode" />
 
         <!-- Action buttons -->
 

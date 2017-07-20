@@ -3,11 +3,14 @@ package me.vguillou.etickettile.helper;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import me.vguillou.etickettile.R;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 /**
  * Helper to activate/deactivate the scan mode, and check it's state.
  */
+@Singleton
 public final class ETicketModeHelper {
 
     /**
@@ -23,11 +26,23 @@ public final class ETicketModeHelper {
 
     private final AccessibilityHelper mAccessibilityHelper;
 
-    public ETicketModeHelper(@NonNull Context context) {
-        mContext = context;
-        mSettingsHelper = new SettingsHelper(context);
-        mPreferenceHelper = new PreferenceHelper(context);
-        mAccessibilityHelper = new AccessibilityHelper(context);
+    private final int mContentDescClickedOn;
+
+    private final int mContentDescClickedOff;
+
+    @Inject
+    public ETicketModeHelper(@NonNull Context context,
+                             @NonNull SettingsHelper settingsHelper,
+                             @NonNull PreferenceHelper preferenceHelper,
+                             @NonNull AccessibilityHelper accessibilityHelper,
+                             @Named("string_cd_tile_clicked_activated") final int contentDescClickedOn,
+                             @Named("string_cd_tile_clicked_deactivated") final int contentDesclickedOff) {
+        mContext = context.getApplicationContext();
+        mSettingsHelper = settingsHelper;
+        mPreferenceHelper = preferenceHelper;
+        mAccessibilityHelper = accessibilityHelper;
+        mContentDescClickedOn = contentDescClickedOn;
+        mContentDescClickedOff = contentDesclickedOff;
     }
 
     /**
@@ -46,8 +61,8 @@ public final class ETicketModeHelper {
         if (success) {
             mPreferenceHelper.setBoolean(PREF_ETICKET_MODE_ACTIVATED, !activated);
             mAccessibilityHelper.say(!activated
-                    ? mContext.getString(R.string.tile_content_desc_click_on)
-                    : mContext.getString(R.string.tile_content_desc_click_off));
+                    ? mContext.getString(mContentDescClickedOn)
+                    : mContext.getString(mContentDescClickedOff));
         }
         // Return the activation state
         return success != activated;

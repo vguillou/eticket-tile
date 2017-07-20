@@ -4,17 +4,22 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Helper class for tracking preference values to keep track of the state of the custom tile
  */
+@Singleton
 public final class PreferenceHelper {
 
     private static final String PREFS_NAME = "eticket_tile_prefs";
 
     private final SharedPreferences mSharedPreferences;
 
+    @Inject
     public PreferenceHelper(@NonNull Context context) {
-        mSharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        mSharedPreferences = context.getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
     /**

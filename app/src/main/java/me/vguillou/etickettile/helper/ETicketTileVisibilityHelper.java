@@ -3,10 +3,14 @@ package me.vguillou.etickettile.helper;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Base helper to handle the eTicket Quick Settings tile
  */
-public class ETicketTileHelper {
+@Singleton
+public class ETicketTileVisibilityHelper {
 
     /**
      * Keeps track of the last known state of the Quick Settings custom tile. There doesn't seem to
@@ -14,10 +18,15 @@ public class ETicketTileHelper {
      */
     private static final String PREF_ETICKET_TILE_SHOWN = "me.vguillou.ETICKETTILE_SHOWN";
 
-    private final PreferenceHelper mPreferenceHelper;
+    protected final Context mContext;
 
-    public ETicketTileHelper(@NonNull Context context) {
-        mPreferenceHelper = new PreferenceHelper(context);
+    protected final PreferenceHelper mPreferenceHelper;
+
+    @Inject
+    public ETicketTileVisibilityHelper(@NonNull Context context,
+                                       @NonNull PreferenceHelper preferenceHelper) {
+        mContext = context.getApplicationContext();
+        mPreferenceHelper = preferenceHelper;
     }
 
     /**

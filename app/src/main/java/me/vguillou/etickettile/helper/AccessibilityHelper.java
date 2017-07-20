@@ -1,19 +1,23 @@
 package me.vguillou.etickettile.helper;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Helper to handle accessibility.
  */
+@Singleton
 public final class AccessibilityHelper {
 
     private final AccessibilityManager mAccessibilityManager;
 
-    public AccessibilityHelper(@NonNull Context context) {
-        mAccessibilityManager = (AccessibilityManager) context.getApplicationContext().getSystemService(Context.ACCESSIBILITY_SERVICE);
+    @Inject
+    public AccessibilityHelper(@NonNull AccessibilityManager accessibilityManager) {
+        mAccessibilityManager = accessibilityManager;
     }
 
     /**

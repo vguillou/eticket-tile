@@ -7,8 +7,10 @@
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:buttonStyle">@style/AppButtonTheme</item>
+        <item name="android:switchStyle">@style/SwitchTextAppearance</item>
         <item name="android:buttonBarButtonStyle">@style/AppButtonBorderlessTheme</item>
         <item name="android:textSize">@dimen/activity_text_size</item>
+        <item name="android:textColor">@color/textColorOnPrimary</item>
     </style>
 
     <style name="NoActionBarAppTheme" parent="AppTheme">
@@ -28,6 +30,10 @@
     <style name="AppButtonTheme" parent="android:Widget.Material.Button.Colored">
         <item name="android:textColor">@color/colorSecondary</item>
         <item name="android:colorControlHighlight">@color/colorSecondary</item>
+    </style>
+
+    <style name="SwitchTextAppearance" parent="@android:style/Widget.Material.CompoundButton.Switch">
+        <item name="android:textColor">@color/textColorOnPrimary</item>
     </style>
 
     <!-- Buttons borderless -->

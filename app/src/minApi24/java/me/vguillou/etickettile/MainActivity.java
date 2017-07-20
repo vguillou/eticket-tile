@@ -6,40 +6,38 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import me.vguillou.etickettile.helper.ETicketTileHelper;
-import me.vguillou.etickettile.helper.PreferenceHelper;
-import me.vguillou.etickettile.helper.QsTileHelper;
+import javax.inject.Inject;
+
+import me.vguillou.etickettile.helper.ETicketTileVisibilityHelper;
+import me.vguillou.etickettile.helper.QsTileActivationHelper;
 
 public class MainActivity extends BaseMainActivity {
-
-    private ETicketTileHelper mETicketTileHelper;
-
-    /**
-     * The preference helper
-     */
-    private PreferenceHelper mPreferenceHelper;
-
-    private boolean mTileShown = false;
 
     /**
      * Switch between Quick Settings activation mode
      */
     protected Switch switchMode;
+    /**
+     * The tile helper
+     */
+    @Inject
+    private ETicketTileVisibilityHelper mETicketTileVisibilityHelper;
+    @Inject
+    private QsTileActivationHelper mQsTileActivationHelper;
+    private boolean mTileShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mETicketTileHelper = new ETicketTileHelper(this);
-        mPreferenceHelper = new PreferenceHelper(this);
-        mTileShown = mETicketTileHelper.isTileShown();
+        mTileShown = mETicketTileVisibilityHelper.isTileShown();
 
         // The QS mode switch
         switchMode = (Switch) findViewById(R.id.mode_switch);
-        switchMode.setChecked(QsTileHelper.isAlternativeMode(mPreferenceHelper));
+        switchMode.setChecked(mQsTileActivationHelper.isAlternativeMode());
         switchMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                QsTileHelper.setAlternativeMode(mPreferenceHelper, isChecked);
+                mQsTileActivationHelper.setAlternativeMode(isChecked);
             }
         });
         updateView(mTileShown);
@@ -53,7 +51,7 @@ public class MainActivity extends BaseMainActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && mETicketTileHelper.isTileShown() != mTileShown) {
+        if (hasFocus && mETicketTileVisibilityHelper.isTileShown() != mTileShown) {
             mTileShown = !mTileShown;
             updateView(mTileShown);
         }
