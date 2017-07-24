@@ -11,8 +11,8 @@ android {
     defaultConfig {
         applicationId "me.vguillou.etickettile"
         targetSdkVersion 25
-        versionCode 2
-        versionName "1.1.0"
+        versionCode 4
+        versionName "1.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -30,8 +30,8 @@ android {
             shrinkResources false
         }
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false // Prevents dependency injection
+            shrinkResources false // Causes ressources (tile icons) to  disappear
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
