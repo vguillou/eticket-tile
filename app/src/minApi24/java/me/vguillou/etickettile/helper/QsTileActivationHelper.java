@@ -3,6 +3,7 @@ package me.vguillou.etickettile.helper;
 import android.content.Context;
 import android.service.quicksettings.Tile;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -75,9 +76,11 @@ public class QsTileActivationHelper {
      *
      * @param tile The tile to manage
      */
-    public void tileAdded(final Tile tile) {
-        getTileActivator().tileAdded(mContext, tile);
-        tile.updateTile();
+    public void tileAdded(@Nullable final Tile tile) {
+        if (tile != null) {
+            getTileActivator().tileAdded(mContext, tile);
+            tile.updateTile();
+        }
     }
 
     /**
@@ -87,23 +90,25 @@ public class QsTileActivationHelper {
      * @param tile      The tile to manage
      * @param activated {@code true} to activate, {@code false} to deactivate
      */
-    public void changeState(final Tile tile,
+    public void changeState(@Nullable final Tile tile,
                             final boolean activated) {
-        final TileActivator tileActivator = getTileActivator();
+        if (tile != null) {
+            final TileActivator tileActivator = getTileActivator();
 
-        // If the activation method changed, some work may be required
-        if (mPreferenceHelper.getBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED))
-            tileActivator.activatorChanged(mContext, tile);
+            // If the activation method changed, some work may be required
+            if (mPreferenceHelper.getBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED))
+                tileActivator.activatorChanged(mContext, tile);
 
-        // Change the state
-        tileActivator.changeState(mContext, tile, activated);
+            // Change the state
+            tileActivator.changeState(mContext, tile, activated);
 
-        // Accessibility
-        tile.setContentDescription(mContext.getString(
-                activated ? mContentDescOn : mContentDescOff));
+            // Accessibility
+            tile.setContentDescription(mContext.getString(
+                    activated ? mContentDescOn : mContentDescOff));
 
-        // Update the tile obviously
-        tile.updateTile();
+            // Update the tile obviously
+            tile.updateTile();
+        }
 
         // Reset the "ModeHasChanged" flag
         mPreferenceHelper.setBoolean(PREF_ALT_TILE_DISPLAY_MODE_HAS_CHANGED, false);
