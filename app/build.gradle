@@ -6,15 +6,15 @@ ext {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.0"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "me.vguillou.etickettile"
         targetSdkVersion 27
         versionCode 5
         versionName "1.2.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     signingConfigs {
         release {
             storeFile file("../etickettile.keystore")
@@ -37,13 +37,29 @@ android {
         }
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    flavorDimensions "minApi"
+
     productFlavors {
         minApi23 {
+            dimension "minApi"
             minSdkVersion 23
             versionCode 10000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi23"
         }
         minApi24 {
+            dimension "minApi"
             minSdkVersion 24
             versionCode 20000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi24"
@@ -52,12 +68,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:support-annotations:${supportVersion}"
-    compile "org.codejargon.feather:feather:1.0"
-
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:support-annotations:${supportVersion}"
+    implementation "org.codejargon.feather:feather:1.0"
 }
